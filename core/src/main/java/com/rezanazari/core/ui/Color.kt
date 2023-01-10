@@ -14,5 +14,6 @@ object AppColor {
     val green500 = Color(0xFF08910D)
     val white = Color(0xFFFFFFFF)
     val gray500 = Color(0xFF8D8D8D)
+    val gray800 = Color(0xFF3D3D3D)
     val gray200 = Color(0xFFECECEC)
 }

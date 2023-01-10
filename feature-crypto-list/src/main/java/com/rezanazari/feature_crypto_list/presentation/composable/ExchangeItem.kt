@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -17,8 +18,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.rezanazari.core.BuildConfig
-import com.rezanazari.core.ui.AppColor
-import com.rezanazari.core.ui.AppTypography
 import com.rezanazari.core.utils.NumberUtils
 import com.rezanazari.feature_crypto_list.domain.model.Exchange
 
@@ -31,27 +30,26 @@ fun ExchangeItem(
     Row(
         Modifier
             .fillMaxWidth()
-            .padding(32.dp)
+            .padding(32.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         AsyncImage(
             model = BuildConfig.BASE_IMAGES_URL + exchange.icon,
             contentDescription = exchange.name.en,
-            modifier = Modifier
-                .width(50.dp)
-                .height(50.dp)
+            modifier = Modifier.size(50.dp)
         )
         Spacer(modifier = modifier.width(16.dp))
         Column {
             Text(
                 text = exchange.name.fa,
-                style = AppTypography.titleMedium
+                style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = modifier.height(8.dp))
             CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
                 Text(
                     text = exchange.volume,
-                    style = AppTypography.bodyMedium,
-                    color = AppColor.gray500,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
             }
         }
@@ -59,18 +57,21 @@ fun ExchangeItem(
         Column(horizontalAlignment = Alignment.End) {
             Text(
                 text = NumberUtils.addRialAndFormat(exchange.sellPrice, context),
-                style = AppTypography.bodyMedium,
+                style = MaterialTheme.typography.bodyMedium,
                 fontSize = 18.sp,
             )
             Spacer(modifier = modifier.height(8.dp))
             Text(
                 text = NumberUtils.generatePercentNumber(exchange.changePercent, context),
-                style = AppTypography.bodyMedium,
-                color = AppColor.white,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onPrimary,
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .background(AppColor.green500, RoundedCornerShape(corner = CornerSize(5.dp)))
+                    .background(
+                        MaterialTheme.colorScheme.primary,
+                        RoundedCornerShape(corner = CornerSize(5.dp))
+                    )
                     .defaultMinSize(minWidth = 80.dp)
                     .padding(top = 4.dp, bottom = 4.dp)
             )

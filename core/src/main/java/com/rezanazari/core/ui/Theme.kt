@@ -1,14 +1,15 @@
 package com.rezanazari.core.ui
 
 import android.app.Activity
-import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.*
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.LayoutDirection
@@ -16,15 +17,18 @@ import androidx.core.view.WindowCompat
 
 
 private val DarkColorScheme = darkColorScheme(
-    primary = AppColor.Purple80,
+    primary = AppColor.green500,
     secondary = AppColor.PurpleGrey80,
-    tertiary = AppColor.Pink80
+    onPrimary = AppColor.white,
+    onBackground = AppColor.gray200,
+    onTertiary = AppColor.gray800
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = AppColor.Purple40,
+    primary = AppColor.green500,
     secondary = AppColor.PurpleGrey40,
-    tertiary = AppColor.Pink40
+    onPrimary = AppColor.gray200,
+    onTertiary = AppColor.gray200
 )
 
 @Composable
@@ -58,10 +62,6 @@ fun CryptoAppTheme(
 fun pickColorScheme(
     darkTheme: Boolean
 ): ColorScheme = when {
-    Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-        val context = LocalContext.current
-        if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-    }
     darkTheme -> DarkColorScheme
     else -> LightColorScheme
 }

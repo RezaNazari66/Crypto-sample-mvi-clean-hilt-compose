@@ -4,10 +4,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Divider
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.rezanazari.core.ui.AppColor
 import com.rezanazari.feature_crypto_list.domain.model.Exchange
 
 @Composable
@@ -33,7 +33,7 @@ fun ExchangeListContent(
             )
 
             if (index < exchangeList.lastIndex)
-                Divider(color = AppColor.gray200, thickness = 1.dp)
+                Divider(color = MaterialTheme.colorScheme.onTertiary, thickness = 1.dp)
         }
     }
 }

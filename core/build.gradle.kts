@@ -64,8 +64,5 @@ dependencies {
 
 
     implementation(libs.timber)
-    androidTestImplementation(libs.bundles.common.android.test)
     kapt(libs.hilt.compiler)
-    kaptAndroidTest(libs.test.android.hilt.compiler)
-
 }
