@@ -1,0 +1,5 @@
+<resources>
+    <string name="exchange_error_refreshing">Sorry, something went wrong when refreshing exchanges</string>
+    <string name="exchange_error_fetching">Sorry, something went wrong when fetching exchanges</string>
+
+</resources>
